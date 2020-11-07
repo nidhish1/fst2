@@ -6,6 +6,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import SidebarChannel from './SidebarChannel';
 
+import { Avatar } from '@material-ui/core';
+
 function SideBar() {
     return (
         <div className="sidebar">
@@ -36,11 +38,22 @@ function SideBar() {
                 
                 </div>
 
+            <div className = "sidebar_voice">
+
+            </div>
+
+            <div className="sidebar_profile" >
+                <Avatar src = "https://picsum.photos/200/300"/>
+                <div className = "sidebar_name" > 
+                    @Nidhish
+                </div>
+            </div>
                 
 
                 
                 
-            </div>
+        </div>
+            
        
 
         

@@ -10,7 +10,7 @@
     padding-left: 0px;
     align-items: center;
     background-color: #2f3135;
-    color: gray;
+    color:white;
     cursor: pointer;
 }
 
@@ -20,8 +20,7 @@
 }
 
 .sidebarChannel_hash {
-    font-size: 15px;
-    padding: 8px;
-    color:white;
+    font-size: 15 px;
+    color : white
 }
 
