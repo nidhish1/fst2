@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState } from 'react'
 import "./SideBar.css"
 import "./SidebarChannel"
 
@@ -6,9 +6,37 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import SidebarChannel from './SidebarChannel';
 
+import {useSelector} from 'react-redux'
 import { Avatar } from '@material-ui/core';
+import { selectUser } from './features/userSlice';
+import db from './firebase';
 
 function SideBar() {
+    const user = useSelector(selectUser)
+
+    const [channels, setchannels] = new useState([])
+
+    useEffect( ()=> {
+
+    db.collection("channels").onSnapshot ( (snapshot) => 
+    setchannels (
+        snapshot.docs.map((doc) => ({
+            id:doc.id,
+            channel:doc.data(),
+        }))
+        )
+    )
+    },[]);
+
+    const handleAddChannel = ()=> {
+        const newChannel = prompt("Enter New Channel")
+        if (newChannel) {
+            db.collection('channels').add({
+                channelName:newChannel,
+            })
+        }
+    }
+
     return (
         <div className="sidebar">
             <div className="sidebar_top">
@@ -22,15 +50,18 @@ function SideBar() {
                         <ExpandMoreIcon/>
                         <h4> textChannels</h4>
                     </div>
-                    <AddIcon className="sidebar_addChannel" />
+                    <AddIcon className="sidebar_addChannel" onClick = {handleAddChannel}/>
                     
 
                     </div>
                     <div className="sidebar_channelList">
-                        <SidebarChannel />
-                        <SidebarChannel />
-                        <SidebarChannel />
-                        <SidebarChannel />
+
+                        {channels.map ( ({id,channel}) =>
+                        
+                        (<SidebarChannel key = {id} id = {"25"}
+                            channel = {channel.channelName}
+                        />) )}
+                  
 
                     </div>
 
@@ -43,9 +74,9 @@ function SideBar() {
             </div>
 
             <div className="sidebar_profile" >
-                <Avatar src = "https://picsum.photos/200/300"/>
+                <Avatar src = {user.photo}/>
                 <div className = "sidebar_name" > 
-                    @Nidhish
+                {user.dispatchName}
                 </div>
             </div>
                 

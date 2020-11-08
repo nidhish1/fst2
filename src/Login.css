@@ -5,6 +5,17 @@
     width: 100%;
 }
 .login > button {
-    
+    width: 200px;
+    font-weight: 800;
+    background-color: #738adb;
 }
 
+.login > button:hover {
+    background-color: black;
+    color : #738adb
+}
+
+.login >div >img {
+    object-fit: contain;
+    height: 150px
+}

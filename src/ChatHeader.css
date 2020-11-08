@@ -22,7 +22,8 @@
     display: flex;
     align-items: center;
     flex: 0.5;
-    align-items: center;
+    justify-content: space-between;
+
 }
 .chatHeader_search {
     display: flex;
@@ -38,4 +39,17 @@
     outline-width: 0;
     color: white;
     border:none;
+}
+.chatHeader_logout {
+    display: flex;
+    float: right;
+    align-items: center;
+    border-radius: 3px;
+    padding: 3px;
+
+}
+
+.chatHeader_logout :hover{
+    color: red;
+    cursor: pointer;
 }
