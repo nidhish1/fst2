@@ -9,8 +9,8 @@ export const appSlice = createSlice({
   reducers: {
     setChannelInfo: (state,action) => {
      
-      state.chennelId = action.payload.setChannelId
-      state.channelName = action.payload.channelName
+      state.chennelId = action.payload.channelId
+      state.channelName = action.payload
     }
   },
 });
