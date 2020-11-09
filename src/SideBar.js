@@ -21,6 +21,7 @@ function SideBar() {
     db.collection("channels").onSnapshot ( (snapshot) => 
     setchannels (
         snapshot.docs.map((doc) => ({
+            id:doc.id,
             channel:doc.data(),
         }))
         )
@@ -56,7 +57,7 @@ function SideBar() {
                     <div className="sidebar_channelList">
 
                         {channels.map ( (ch) => <SidebarChannel key = {ch.id}
-                            id = {ch.channel.id} channel = {ch.channel.channelName}
+                            id = {ch.id} channel = {ch.channel.channelName}
                         />)}
                   
 
