@@ -5,13 +5,13 @@ import SearchIcon from '@material-ui/icons/Search';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {auth} from './firebase'
 
-function ChatHeader() {
+function ChatHeader( {channelName}) {
     return (
         <div className="chatHeader">
             <div className ="chatHeader_left">
             <h3>
                 <span className = "chatHeader_hash">#</span>
-                Channel Name
+                {channelName}
             </h3>
             </div>
 
